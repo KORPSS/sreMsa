@@ -14,14 +14,14 @@ kubectl get pods
 |h1      |httpd     |
 
 ```
-kubectl ~
-kubectl ~
-kubectl ~
+kubectl create deployment --image nginx n1
+kubectl create deployment --image ubuntu u1
+kubectl create deployment --image httpd h1
 ```
 
 ## 3. 만들어진 pods를 확인하시오.
 ```
-kubectl ~
+kubectl get pods
 ```
 
 ## 4. ubuntu이미지가 잘 못 만들어진 원인은?
@@ -48,39 +48,39 @@ spec:
     name: u1
   restartPolicy: Always
 EOF
-kubectl ~
+kubectl create -f u1.yml
 ```
 
 
 ## 6. pods의 Label이 server=ubuntu인 모든 파드를 출력하시오.
 ```
-kubectl ~
+kubectl get pods -l server=ubuntu
 ```
 
 ## 7. n1,h1 pods의 label을 server=ubuntu, app=web  이라고 지정하시오.
 ```
-kubectl ~
-kubectl ~
+kubectl label pods n1-9949596c4-9d6jb server=ubuntu app=web --overwrite
+kubectl label pods h1-55cdf57468-p6lfh server=ubuntu app=web --overwrite
 ```
 ## 8. 모든 pods의 label과 함께 출력하시오.
 ```
-kubectl ~
+kubectl get pods --show-labels=true 
 ```
 
 ## 9. app=web인 Pods만 출력하시오.
 ```
-kubectl ~
+kubectl get pods -l app=web
 ```
 
 ## 10. Label이 app=web인 모든 Pods를 삭제 하시오.
 ```
-kubectl ~
+kubectl delete pods -l app=web
 ```
 
 ## 11. 모든 파드를 지우시오.
 ```
-kubectl ~
-kubectl ~
+kubectl delete deployments.apps h1
+kubectl delete deployments.apps n1
 ```
 * cf)
 ```
