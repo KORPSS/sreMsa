@@ -27,12 +27,12 @@ kubectl describe deployments/h1
 
 ## 5. replicasets을 확인하시오.
 ```
-kubectl ~
+kubectl get deployments.apps h1 -o json | jq '.spec.replicas'
 ```
 
 ## 6. replicasets의 최대 확장 갯수를 10으로 지정하시오.
 ```
-kubectl ~
+kubectl scale deployment h1 --replicas 10
 ```
 
 
